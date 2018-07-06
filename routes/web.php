@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','ToDoController@index');
+Route::get('/editar','ToDoController@editar')->name('editar');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
