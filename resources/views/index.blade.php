@@ -14,23 +14,30 @@
         </thead>
 
         <tbody>
+        @foreach($tareas as $tarea)
         <tr>
-            <td>Crear Base de datos</td>
+            <td>
+                @if(!$tarea->estado)
+                {{$tarea->contenido}}
+                    @else
+                <strike class="grey-text">   {{$tarea->contenido}}</strike>
+                    @endif
+            </td>
             @if (Auth::user()->is_admin == 1)
-            <td>Jesus</td>
+            <td>{{$task->user->name}}</td>
             @endif
             <td>
-                <a title="Editar" href="">
+                <a title="Editar" href="{{route('editar',$tarea->id)}}">
                     <i class="material-icons green-text">edit</i>
                 </a>
             </td>
             <td>
-                <a title="Borrar" href="">
+                <a title="Borrar" onclick="return confirm('Borrar?')" href="{{route('borrar',$tarea->id)}}">
                     <i class="material-icons red-text">delete</i>
                 </a>
             </td>
         </tr>
-
+    @endforeach
 
 
         </tbody>
@@ -64,14 +71,15 @@
         </li>
     </ul>
 
-    <form class="col s12">
+    <form method="POST" action="{{ route('store') }}" class="col s12">
         <div class="row">
             <div class="input-field col s12">
-                <input id="ATarea" type="text" class="validate">
+                <input name="tarea" id="ATarea" type="text" class="validate">
                 <label for="ATarea">Nueva Tarea</label>
             </div>
                 @include('partials.empleados')
-            <a href="" class="waves-effect waves-light btn">Añadir Nueva Tarea</a>
+            <button type="submit" class="waves-effect waves-light btn">Añadir Nueva Tarea</button>
+            {!! csrf_field() !!}
         </div>
     </form>
     @if (Auth::user()->is_admin == 0)
