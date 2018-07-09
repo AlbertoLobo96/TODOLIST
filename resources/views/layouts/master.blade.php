@@ -13,15 +13,20 @@
 
 <body>
 <div class="container">
-    <p>Logged by
-        <b>Alberto</b>
-        <a href="" class="waves-effect waves-light btn">Logout</a>
-    </p>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+        {!! csrf_field() !!}
+        <p>Logged as
+            <b>{{Auth::user()->name}}</b>
+            <button type="submit" class="waves-effect waves-light btn">Logout</button>
+        </p>
 
+        @if (Auth::user()->is_admin == 1)
     <ul class="collapsible">
         <li>
             <div class="collapsible-header">
-                <i class="material-icons">person_add</i>Invitaciones</div>
+                <i class="material-icons">person_add</i>Invitaciones<span class="new badge">4</span>
+
+            </div>
             <div class="collapsible-body">
                 <p class="red-text">
                     <b>
@@ -57,9 +62,8 @@
             </div>
         </li>
     </ul>
-
+@endif
     <h1 class="center-align green-text text-darken-4">TO-DO LIST</h1>
-
     @yield('content')
 </div>
 

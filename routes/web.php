@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/','ToDoController@index');
-Route::get('/editar','ToDoController@editar')->name('editar');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/','ToDoController@index');
+    Route::get('/editar','ToDoController@editar')->name('editar');
+});
+
+
 
 Auth::routes();
 
