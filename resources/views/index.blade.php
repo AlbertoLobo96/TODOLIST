@@ -31,56 +31,8 @@
             </td>
         </tr>
 
-        <tr>
-            <td>Realizar FrontEnd</td>
-            @if (Auth::user()->is_admin == 1)
-            <td>Alberto</td>
-            @endif
-            <td>
-                <a title="Editar" href="">
-                    <i class="material-icons green-text">edit</i>
-                </a>
-            </td>
-            <td>
-                <a title="Borrar" href="">
-                    <i class="material-icons red-text">delete</i>
-                </a>
-            </td>
-        </tr>
 
-        <tr>
-            <td>Realizar BackEnd</td>
-            @if (Auth::user()->is_admin == 1)
-            <td>Jose</td>
-            @endif
-            <td>
-                <a title="Editar" href="">
-                    <i class="material-icons green-text">edit</i>
-                </a>
-            </td>
-            <td>
-                <a title="Borrar" href="">
-                    <i class="material-icons red-text">delete</i>
-                </a>
-            </td>
-        </tr>
 
-        <tr>
-            <td>Realizar SEO</td>
-            @if (Auth::user()->is_admin == 1)
-            <td>Angela</td>
-            @endif
-            <td>
-                <a title="Editar" href="">
-                    <i class="material-icons green-text">edit</i>
-                </a>
-            </td>
-            <td>
-                <a title="Borrar" href="">
-                    <i class="material-icons red-text">delete</i>
-                </a>
-            </td>
-        </tr>
         </tbody>
     </table>
 
